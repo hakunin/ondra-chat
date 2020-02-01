@@ -1,7 +1,7 @@
 import React from 'react';
-import './styles.css';
-import Message from './message.js';
-import Compose from './compose.js';
+import '../styles.css';
+import Message from '../components/message.js';
+import Compose from '../components/compose.js';
 
 const users = {
   dad: {
@@ -58,9 +58,9 @@ export default class Chat extends React.Component {
   }
 
   renderMessages() {
-    return this.state.messages.map((message) => {
+    return this.state.messages.map((message, i) => {
       return (
-        <Message from={message.from}>
+        <Message key={i} from={message.from}>
           {message.text}
         </Message>
       );

@@ -10,19 +10,31 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "react-transform-hmr": "^1.0.4",
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "babel-loader": "^8.0.6",
     "css-loader": "^3.4.2",
     "html-webpack-plugin": "^3.2.0",
+    "inflection": "^1.12.0",
+    "jquery": "^3.4.1",
+    "lodash-es": "^4.17.15",
+    "promise": "^8.0.3",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-redux": "^7.1.3",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "react-transform-hmr": "^1.0.4",
+    "redux": "^4.0.5",
+    "redux-devtools": "^3.5.0",
+    "store": "^2.0.12",
     "style-loader": "^1.1.3",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.2"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.8.3",
+    "@babel/preset-stage-0": "^7.8.3"
   }
 }

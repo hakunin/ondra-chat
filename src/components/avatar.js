@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.css';
+//import './styles.css';
 
 const style = {
   fontSize: '1.7em',

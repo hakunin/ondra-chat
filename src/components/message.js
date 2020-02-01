@@ -1,5 +1,4 @@
 import React from 'react';
-import './styles.css';
 import Avatar from './avatar.js';
 
 const style = {
