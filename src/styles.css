@@ -1,10 +1,16 @@
 
 body {
   background: #eee;
-  padding-top: 60px;
+  padding: 70px 10px 10px 10px;
+  text-transform: uppercase;
+}
+.message-container {
+  clear: both;
+  font-size: 1.2em;
 }
 
 .message {
+  margin-top: 5px;
   border-radius: 5px;
   padding: 5px 10px;
   display: inline-block;

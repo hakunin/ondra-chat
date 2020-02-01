@@ -39,7 +39,9 @@ export default class Chat extends React.Component {
           <a 
             className="navbar-brand text-white" 
             href="#"
-          >Tata</a>
+          >
+            Tata
+          </a>
 
 
         </nav>
