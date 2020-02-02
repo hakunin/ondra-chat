@@ -5,33 +5,7 @@ import Message from '../components/message.js';
 import Compose from '../components/compose.js';
 import {Communication} from '../utils/Communication';
 
-const users = {
-  dad: {
-    avatar: "👩‍🦲",
-  },
-  mom: {
-    avatar:"👩",
-  },
-  me: {
-    isMe: true,
-    avatar: "🧒",
-  }
-};
-
 export class Chat extends React.Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      messages: [
-        {from: users.dad, text: 'AHOJ'},
-        {from: users.dad, text: 'ONDRO'},
-        {from: users.me, text: 'AHOJ'},
-        {from: users.me, text: 'TATI'},
-      ],
-    };
-  }
 
   handleSend = (message) => {
     Communication.instance.sendMessage(
@@ -67,7 +41,6 @@ export class Chat extends React.Component {
         {this.renderMessages()}
 
         <Compose 
-          user={users.me}
           onSend={this.handleSend}
         />
       </div>
@@ -75,9 +48,14 @@ export class Chat extends React.Component {
   }
 
   renderMessages() {
-    return this.state.messages.map((message, i) => {
+    return this.props.messages.map((message, i) => {
+      console.log('Message', message);
       return (
-        <Message key={i} from={message.from}>
+        <Message 
+          key={i}
+          from={message.from} 
+          isMine={this.props.user.id === (message.from || {}).id}
+        >
           {message.text}
         </Message>
       );
@@ -88,6 +66,7 @@ export class Chat extends React.Component {
 export default connect((state, props) => {
   console.log('PROPS', props);
   return {
+    user: state.user,
     messages: state.messages[props.match.params.id] || [],
   }
 })(Chat);

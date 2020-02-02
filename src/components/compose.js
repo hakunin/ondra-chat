@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from 'react-redux';
+
 import Avatar from './avatar.js';
 
 const style = {
@@ -10,7 +12,7 @@ const words = [
   'JAK', 'SE', 'MAS',
 ]
 
-export default class Compose extends React.Component {
+export class Compose extends React.Component {
 
   constructor(props) {
     super(props);
@@ -43,3 +45,9 @@ export default class Compose extends React.Component {
     );
   }
 };
+
+export default connect((state, props) => {
+  return {
+    user: state.user,
+  }
+})(Compose);

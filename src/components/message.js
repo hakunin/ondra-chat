@@ -15,8 +15,7 @@ const otherStyle = {
 }
 
 export default (props) => {
-  console.log(props);
-  const mine = props.from.isMe;
+  const mine = props.isMine;
 
   return (
     <div 

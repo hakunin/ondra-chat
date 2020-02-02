@@ -39,10 +39,7 @@ export class Communication extends React.Component {
 
   sendMessage(channel, message) {
     console.log('SEND MESSAGE', channel, message);
-    this.ably.channels.get(channel).publish("message", {
-      from: this.props.user, 
-      message
-    });
+    this.ably.channels.get(channel).publish("message", message);
   }
 
   onFriendRequest(e) {
