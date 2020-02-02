@@ -31,7 +31,11 @@ export class ContactsPage extends React.Component {
   renderContacts() {
     return map(this.props.contacts, (contact) => {
       return (
-        <a className="Contact p-3">
+        <a 
+          className="Contact p-3"
+          onClick={() => this.props.history.push('/chat/'+contact.channel)}
+          key={contact.id}
+        >
           {contact.name}
         </a>
       );

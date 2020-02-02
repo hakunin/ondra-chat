@@ -1,7 +1,9 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import '../styles.css';
 import Message from '../components/message.js';
 import Compose from '../components/compose.js';
+import {Communication} from '../utils/Communication';
 
 const users = {
   dad: {
@@ -16,7 +18,7 @@ const users = {
   }
 };
 
-export default class Chat extends React.Component {
+export class Chat extends React.Component {
 
   constructor(props) {
     super(props);
@@ -31,6 +33,19 @@ export default class Chat extends React.Component {
     };
   }
 
+  handleSend = (message) => {
+    Communication.instance.sendMessage(
+      this.props.match.params.id,
+      message
+    );
+
+    Actions.messages.merge(
+      {[this.props.match.params.id]: 
+        this.props.messages.concat(message)
+      }
+    );
+  }
+
   render() {
     return (
       <div className="ChatPage">
@@ -41,15 +56,20 @@ export default class Chat extends React.Component {
           >
             Tata
           </a>
+
+          <a
+            className="btn text-white"
+            style={{fontSize: '1.4em'}}
+            onClick={() => this.props.history.push('/contacts')}
+          >&times;</a>
         </nav>
 
         {this.renderMessages()}
 
         <Compose 
           user={users.me}
-          onSend={
-            (message) => this.setState({messages: this.state.messages.concat(message) })
-          }/>
+          onSend={this.handleSend}
+        />
       </div>
     );
   }
@@ -65,3 +85,9 @@ export default class Chat extends React.Component {
   }
 };
 
+export default connect((state, props) => {
+  console.log('PROPS', props);
+  return {
+    messages: state.messages[props.match.params.id] || [],
+  }
+})(Chat);

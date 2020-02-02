@@ -25,6 +25,7 @@ export default class App extends Component {
       }
     });
     this.redux = redux;
+    window.redux = redux;
     window.Store = store;
     window.Actions = actions;
   }

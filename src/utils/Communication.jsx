@@ -13,6 +13,7 @@ export class Communication extends React.Component {
   connect() {
     this.channel = this.ably.channels.get(this.props.user.channel);
     this.channel.subscribe('friendRequest', this.onFriendRequest);
+    this.channel.subscribe('message', this.onMessage);
   }
 
   componentWillMount() {
@@ -36,10 +37,28 @@ export class Communication extends React.Component {
     channel.publish("friendRequest", this.props.user);
   }
 
+  sendMessage(channel, message) {
+    console.log('SEND MESSAGE', channel, message);
+    this.ably.channels.get(channel).publish("message", {
+      from: this.props.user, 
+      message
+    });
+  }
+
   onFriendRequest(e) {
-    console.log('GOT FRIEND REQUEST', e);
     Actions.contacts.merge({
       [e.data.channel]: e.data
+    });
+  }
+
+  onMessage(e) {
+    console.log('GOT A MESSAGE!', e);
+
+    const channel = e.data.from.channel;
+    const messages = redux.getState().messages[channel] || [];
+
+    Actions.messages.merge({
+      [channel]: messages.concat(e.data)
     });
   }
 

@@ -27,6 +27,12 @@ export class AddContactPage extends React.Component {
           >
             Pridat kontakt
           </a>
+
+          <a
+            className="btn text-white"
+            style={{fontSize: '1.4em'}}
+            onClick={() => this.props.history.push('/contacts')}
+          >&times;</a>
         </nav>
 
         <div className="container text-align">

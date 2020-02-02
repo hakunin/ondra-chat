@@ -14,8 +14,7 @@ export default ({
   state = window.__REDUX_INIT_CONTEXT,
 } = {}) => {
   const map = {
-    messages: arrayReducer(),
-
+    messages: storedSingletonReducer('messages', {}),
     user: storedSingletonReducer('user', {empty: true}),
     contacts: storedSingletonReducer('contacts', {}),
   };
