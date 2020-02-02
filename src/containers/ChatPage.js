@@ -33,17 +33,14 @@ export default class Chat extends React.Component {
 
   render() {
     return (
-      <div className="page">
+      <div className="ChatPage">
         <nav className="navbar bg-primary fixed-top">
-
           <a 
             className="navbar-brand text-white" 
             href="#"
           >
             Tata
           </a>
-
-
         </nav>
 
         {this.renderMessages()}

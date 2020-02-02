@@ -1,9 +1,20 @@
 
 body {
   background: #eee;
-  padding: 70px 10px 10px 10px;
   text-transform: uppercase;
 }
+input {
+  text-transform: uppercase;
+}
+
+.ContactsPage {
+  padding: 56px 0 0 0;
+}
+
+.ChatPage {
+  padding: 70px 10px 10px 10px;
+}
+
 .message-container {
   clear: both;
   font-size: 1.2em;
@@ -50,5 +61,13 @@ body {
   border-style: solid;
   border-width: 0 13px 13px 0;
   border-color: transparent #ffffff transparent transparent;
+  display: block;
+}
+
+.ContactsPage {
+}
+.Contact {
+  border-bottom: 1px solid #ccc;
+  background: white;
   display: block;
 }

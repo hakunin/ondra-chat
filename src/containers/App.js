@@ -1,14 +1,17 @@
 import React, {Component} from 'react';
 import {connect, Provider} from 'react-redux';
-import {Route, Switch} from 'react-router';
+import {Route, Switch, MemoryRouter} from 'react-router';
 import {BrowserRouter, Link} from 'react-router-dom';
 import storeJs from 'store';
 
 import configureAppStore from '../store/configureAppStore';
 import WebsocketListener from '../utils/WebsocketListener';
-import {websocket} from '../utils/all';
 
 import ChatPage from '../containers/ChatPage';
+import LoginPage from '../containers/LoginPage';
+import ContactsPage from '../containers/ContactsPage';
+import AddContactPage from '../containers/AddContactPage';
+import Communication from '../utils/Communication';
 
 export default class App extends Component {
 
@@ -24,18 +27,20 @@ export default class App extends Component {
     this.redux = redux;
     window.Store = store;
     window.Actions = actions;
-    websocket.connect();
   }
 
   render() {
     return (
       <Provider store={this.redux}>
-        <BrowserRouter>
+        <Communication />
+        <MemoryRouter>
           <Switch>
-            <Route exact path="/" component={ChatPage} />
-            <Route exact path="/chat" component={ChatPage} />
+            <Route exact path="/" component={LoginPage} />
+            <Route exact path="/contacts/add" component={AddContactPage} />
+            <Route exact path="/contacts" component={ContactsPage} />
+            <Route exact path="/chat/:id" component={ChatPage} />
           </Switch>
-        </BrowserRouter>
+        </MemoryRouter>
       </Provider>
     );
   }
